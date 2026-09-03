@@ -4,11 +4,15 @@ import Sidebar from '../components/Sidebar';
 import CategoryFilter from '../components/CategoryFilter';
 import ProductGrid from '../components/ProductGrid';
 import { productos, categorias } from '../data/productos';
+import { useOrder } from '../context/OrderContext';
 
 function Catalogo() {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todos');
   const [busqueda, setBusqueda] = useState('');
   const [mensajeToast, setMensajeToast] = useState('');
+
+  // Acceso al estado global de la orden
+  const { addToCart } = useOrder();
 
   // Filtrado reactivo por categoría y término de búsqueda
   const productosFiltrados = useMemo(() => {
@@ -26,8 +30,9 @@ function Catalogo() {
     });
   }, [categoriaSeleccionada, busqueda]);
 
-  // Manejo de interacción de agregar al pedido
+  // Manejo de interacción de agregar al pedido conectado a OrderContext
   const handleAddToCart = (producto) => {
+    addToCart(producto);
     setMensajeToast(`¡"${producto.nombre}" agregado al pedido!`);
     setTimeout(() => {
       setMensajeToast('');

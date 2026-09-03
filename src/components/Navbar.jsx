@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { useOrder } from '../context/OrderContext';
 
 function Navbar() {
+  const { totalItems } = useOrder();
+
   return (
     <header className="kiosk-navbar">
       <Link to="/" className="navbar-brand">
@@ -15,7 +18,7 @@ function Navbar() {
 
       <Link to="/pedido" className="navbar-order-btn">
         <span>🛍️ Mi Pedido</span>
-        <span className="order-badge">0</span>
+        <span className="order-badge">{totalItems}</span>
       </Link>
     </header>
   );

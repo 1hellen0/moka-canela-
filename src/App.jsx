@@ -1,10 +1,13 @@
 import { BrowserRouter } from 'react-router-dom';
+import { OrderProvider } from './context/OrderContext';
 import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
     <BrowserRouter>
-      <AppRoutes />
+      <OrderProvider>
+        <AppRoutes />
+      </OrderProvider>
     </BrowserRouter>
   );
 }
