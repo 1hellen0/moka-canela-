@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import OrderSummary from "../components/OrderSummary";
 import { useCart } from "../context/CartContext";
 
-const initial = { name:"", phone:"", email:"", cedula:"", address:"", province:"San José", canton:"", district:"", notes:"" };
+const initial = { name:"", phone:"", email:"", cedula:"", address:"", province:"San José", canton:"", district:"", notes:"", paymentMethod:"" };
 
 export default function Checkout() {
   const { items, deliveryType, total } = useCart();
@@ -22,8 +22,8 @@ export default function Checkout() {
     e.preventDefault();
     if (!items.length) return setError("No puedes confirmar un pedido vacío.");
     const required = deliveryType === "delivery"
-      ? ["name","phone","email","cedula","address","province","canton","district"]
-      : ["name","phone","email","cedula"];
+      ? ["name","phone","email","cedula","address","province","canton","district","paymentMethod"]
+      : ["name","phone","email","cedula","paymentMethod"];
     if (required.some(key => !form[key].trim())) {
       setError("Completa todos los campos obligatorios.");
       return;
@@ -76,6 +76,17 @@ export default function Checkout() {
           )}
 
           <label>Notas del pedido<textarea name="notes" value={form.notes} onChange={change} placeholder="Indicaciones adicionales (opcional)" /></label>
+
+          <hr />
+          <h2>Forma de pago</h2>
+          <label>Selecciona cómo pagarás *
+            <select name="paymentMethod" value={form.paymentMethod} onChange={change}>
+              <option value="">Elige una opción</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="Tarjeta">Tarjeta</option>
+              <option value="SINPE Móvil">SINPE Móvil</option>
+            </select>
+          </label>
 
           <button className="button primary full large" type="submit">Confirmar compra</button>
         </form>

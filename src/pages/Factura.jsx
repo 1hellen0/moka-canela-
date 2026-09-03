@@ -32,6 +32,7 @@ export default function Factura() {
           <div><small>CLIENTE</small><strong>{order.customer.name}</strong></div>
           <div><small>FECHA</small><strong>{new Date(order.createdAt).toLocaleString("es-CR")}</strong></div>
           <div><small>MODALIDAD</small><strong>{order.deliveryType === "pickup" ? "🏪 Retiro en cafetería" : "🏠 Entrega a domicilio"}</strong></div>
+          <div><small>FORMA DE PAGO</small><strong>{order.paymentMethod || "No especificada"}</strong></div>
         </div>
 
         <div className="receipt-items">
@@ -53,9 +54,8 @@ export default function Factura() {
         )}
 
         <div className="payment-notice">
-          <strong>Selecciona tu forma de pago</strong>
-          <p>El pago se gestiona después de confirmar la compra. Opciones disponibles:</p>
-          <div className="payment-options"><span>💵 Efectivo</span><span>💳 Tarjeta</span><span>📱 SINPE Móvil</span></div>
+          <strong>Pago seleccionado: {order.paymentMethod || "No especificado"}</strong>
+          <p>Presenta este comprobante al momento de retirar o recibir tu pedido.</p>
         </div>
       </article>
 
