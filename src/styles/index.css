@@ -488,3 +488,408 @@ body {
     padding: 1rem 1.5rem;
   }
 }
+
+/* ===================================================
+   Catálogo de Productos (Kiosco Digital)
+   =================================================== */
+
+.catalogo-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.catalogo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.catalogo-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.catalogo-title {
+  font-size: 2.35rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+  letter-spacing: -0.5px;
+}
+
+.catalogo-subtitle {
+  font-size: 1.1rem;
+  color: var(--texto-suave);
+}
+
+/* Buscador */
+.catalogo-search-container {
+  position: relative;
+  width: 360px;
+  max-width: 100%;
+}
+
+.catalogo-search-input {
+  width: 100%;
+  padding: 0.85rem 2.8rem 0.85rem 2.9rem;
+  border-radius: var(--radio-pill);
+  border: 1.5px solid var(--borde-suave);
+  background-color: var(--blanco);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--texto-oscuro);
+  transition: all 0.2s ease;
+  box-shadow: var(--sombra-suave);
+}
+
+.catalogo-search-input:focus {
+  border-color: var(--canela);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(200, 138, 74, 0.18);
+}
+
+.catalogo-search-container .search-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.1rem;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--crema);
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--texto-suave);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.search-clear-btn:hover {
+  background: var(--canela-light);
+  color: var(--cafe-principal);
+}
+
+/* Filtro de Categorías */
+.category-filter-container {
+  width: 100%;
+}
+
+.category-filter-scroll {
+  display: flex;
+  gap: 0.85rem;
+  overflow-x: auto;
+  padding: 0.35rem 0.15rem 0.75rem;
+  scrollbar-width: thin;
+}
+
+.category-filter-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.category-filter-scroll::-webkit-scrollbar-thumb {
+  background: var(--borde-suave);
+  border-radius: 10px;
+}
+
+.category-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1.45rem;
+  border-radius: var(--radio-pill);
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  color: var(--texto-oscuro);
+  font-weight: 700;
+  font-size: 0.98rem;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.22s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: var(--sombra-suave);
+}
+
+.category-pill-btn:hover {
+  background-color: var(--crema);
+  border-color: var(--canela);
+  transform: translateY(-2px);
+}
+
+.category-pill-btn.active {
+  background-color: var(--cafe-principal);
+  border-color: var(--cafe-principal);
+  color: var(--blanco);
+  box-shadow: 0 6px 18px rgba(75, 46, 32, 0.28);
+}
+
+.category-pill-icon {
+  font-size: 1.25rem;
+}
+
+/* Barra de Metadatos */
+.catalogo-meta-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.25rem;
+}
+
+.products-counter {
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+}
+
+.products-counter strong {
+  color: var(--cafe-principal);
+}
+
+/* Cuadrícula de Productos */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.85rem;
+}
+
+/* Tarjeta de Producto */
+.product-card {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sombra-suave);
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--canela);
+  box-shadow: var(--sombra-card);
+}
+
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background-color: var(--crema);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-category-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(43, 33, 27, 0.82);
+  backdrop-filter: blur(6px);
+  color: var(--blanco);
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radio-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.product-info {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.6rem;
+}
+
+.product-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cafe-principal);
+  line-height: 1.25;
+}
+
+.product-description {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  line-height: 1.45;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--borde-suave);
+}
+
+.product-price {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+}
+
+.btn-add-product {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--canela);
+  color: var(--blanco);
+  border: none;
+  border-radius: var(--radio-pill);
+  padding: 0.7rem 1.3rem;
+  font-weight: 800;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.22s ease;
+  box-shadow: 0 4px 12px rgba(200, 138, 74, 0.3);
+}
+
+.btn-add-product:hover {
+  background: var(--canela-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(200, 138, 74, 0.45);
+}
+
+.btn-add-product:active {
+  transform: scale(0.96);
+}
+
+.btn-add-product.added {
+  background: #2e7d32;
+  box-shadow: 0 4px 14px rgba(46, 125, 50, 0.4);
+  transform: scale(1.02);
+}
+
+.btn-add-product .btn-icon {
+  font-size: 1.1rem;
+}
+
+/* Estado Vacío de Búsqueda */
+.empty-catalog-state {
+  background-color: var(--blanco);
+  border: 1.5px dashed var(--borde-suave);
+  border-radius: var(--radio-lg);
+  padding: 4.5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-state-title {
+  font-size: 1.5rem;
+  color: var(--cafe-principal);
+  font-weight: 800;
+}
+
+.empty-state-text {
+  color: var(--texto-suave);
+  font-size: 1rem;
+  max-width: 440px;
+  line-height: 1.45;
+}
+
+/* Toast Notificación */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--cafe-principal);
+  color: var(--blanco);
+  padding: 0.95rem 1.6rem;
+  border-radius: var(--radio-pill);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 0.98rem;
+  animation: toastFadeIn 0.3s ease;
+}
+
+.toast-icon {
+  font-size: 1.2rem;
+}
+
+@keyframes toastFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajustes Responsivos para Catálogo */
+@media (max-width: 768px) {
+  .catalogo-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .catalogo-search-container {
+    width: 100%;
+  }
+
+  .catalogo-title {
+    font-size: 1.95rem;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toast-notification {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    justify-content: center;
+  }
+}
+
