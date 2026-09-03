@@ -893,3 +893,1001 @@ body {
   }
 }
 
+/* ===================================================
+   Página Pedido (Kiosco Digital)
+   =================================================== */
+
+.pedido-page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border-bottom: 1.5px solid var(--borde-suave);
+  padding-bottom: 1.5rem;
+}
+
+.pedido-eyebrow {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--canela);
+  text-transform: uppercase;
+}
+
+.pedido-title {
+  font-size: 2.35rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+  letter-spacing: -0.5px;
+  margin-top: 0.2rem;
+}
+
+.pedido-subtitle {
+  font-size: 1.05rem;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+}
+
+.btn-clear-cart {
+  background-color: var(--blanco);
+  border: 1.5px solid #e2b4ab;
+  color: #a33b2a;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radio-pill);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-clear-cart:hover {
+  background-color: #fbecea;
+  border-color: #c94a34;
+  transform: translateY(-2px);
+}
+
+/* Estado Vacío de Pedido */
+.empty-order-state {
+  background-color: var(--blanco);
+  border: 1.5px dashed var(--borde-suave);
+  border-radius: var(--radio-lg);
+  padding: 5rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--sombra-suave);
+  max-width: 680px;
+  margin: 2rem auto;
+}
+
+.empty-order-icon {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.empty-order-badge {
+  background: var(--canela-light);
+  color: var(--canela);
+  padding: 0.35rem 0.95rem;
+  border-radius: var(--radio-pill);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.empty-order-title {
+  font-size: 2.1rem;
+  color: var(--cafe-principal);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+.empty-order-desc {
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.btn-explore-menu {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--canela), var(--cafe-secundario));
+  color: var(--blanco);
+  font-weight: 800;
+  font-size: 1.1rem;
+  padding: 0.95rem 2.2rem;
+  border-radius: var(--radio-pill);
+  text-decoration: none;
+  box-shadow: var(--sombra-boton);
+  transition: all 0.22s ease;
+  margin-top: 1rem;
+}
+
+.btn-explore-menu:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(200, 138, 74, 0.45);
+}
+
+/* Selector de Entrega */
+.delivery-selector-card {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  padding: 1.75rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.delivery-header {
+  margin-bottom: 1.25rem;
+}
+
+.delivery-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--cafe-principal);
+}
+
+.delivery-desc {
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+}
+
+.delivery-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.delivery-option-btn {
+  background-color: var(--fondo);
+  border: 2px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.delivery-option-btn:hover {
+  border-color: var(--canela);
+  background-color: var(--blanco);
+  transform: translateY(-2px);
+}
+
+.delivery-option-btn.selected {
+  border-color: var(--canela);
+  background-color: var(--canela-light);
+  box-shadow: 0 6px 18px rgba(200, 138, 74, 0.2);
+}
+
+.delivery-icon {
+  font-size: 2.2rem;
+}
+
+.delivery-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.delivery-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cafe-principal);
+}
+
+.delivery-detail {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+}
+
+.delivery-check {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--canela);
+}
+
+/* Cuadrícula de Pedido: Ítems + Resumen */
+.order-content-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.order-items-container {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  padding: 1.5rem 1.85rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.order-item {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--borde-suave);
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-icon-box {
+  width: 76px;
+  height: 76px;
+  border-radius: var(--radio-md);
+  background-color: var(--crema);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.order-item-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.order-icon-emoji {
+  font-size: 2.5rem;
+}
+
+.order-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.6rem;
+}
+
+.order-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.order-item-name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--cafe-principal);
+}
+
+.order-unit-price {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.btn-remove-item {
+  background: none;
+  border: none;
+  color: #b73e2d;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radio-sm);
+  transition: background-color 0.2s;
+}
+
+.btn-remove-item:hover {
+  background-color: #fbecea;
+}
+
+.extras-summary {
+  font-size: 0.82rem;
+  color: var(--canela);
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+
+.edit-extras {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  color: var(--texto-suave);
+}
+
+.chip {
+  border: 1px solid var(--borde-suave);
+  background: var(--fondo);
+  border-radius: var(--radio-pill);
+  padding: 0.25rem 0.65rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.chip.selected {
+  background-color: var(--canela-light);
+  border-color: var(--canela);
+  color: var(--cafe-principal);
+  font-weight: 700;
+}
+
+.order-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-pill);
+  background-color: var(--fondo);
+  overflow: hidden;
+}
+
+.qty-btn {
+  width: 38px;
+  height: 34px;
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cafe-principal);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s;
+}
+
+.qty-btn:hover {
+  background-color: var(--crema);
+}
+
+.qty-number {
+  width: 36px;
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--cafe-principal);
+}
+
+.order-line-total {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+}
+
+.order-items-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--borde-suave);
+  text-align: center;
+}
+
+.btn-add-more-products {
+  display: inline-block;
+  color: var(--canela);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 1.02rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radio-pill);
+  transition: all 0.2s;
+}
+
+.btn-add-more-products:hover {
+  background-color: var(--canela-light);
+  transform: translateX(4px);
+}
+
+/* Tarjeta Resumen del Pedido */
+.order-summary-card {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  padding: 2rem;
+  box-shadow: var(--sombra-card);
+  position: sticky;
+  top: 96px;
+}
+
+.summary-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+}
+
+.summary-subtitle {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+  margin-bottom: 1.25rem;
+}
+
+.summary-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.98rem;
+  color: var(--texto-suave);
+}
+
+.summary-row strong {
+  color: var(--cafe-principal);
+}
+
+.text-free {
+  color: #2e7d32 !important;
+  font-weight: 800;
+}
+
+.summary-delivery-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--canela);
+}
+
+.summary-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--borde-suave);
+}
+
+.total-label {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+  display: block;
+}
+
+.total-taxes-note {
+  font-size: 0.75rem;
+  color: var(--texto-suave);
+}
+
+.total-amount {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+}
+
+.summary-action-box {
+  margin-top: 1.5rem;
+}
+
+.btn-proceed-checkout {
+  width: 100%;
+  background: linear-gradient(135deg, var(--canela), var(--cafe-secundario));
+  color: var(--blanco);
+  border: none;
+  border-radius: var(--radio-pill);
+  padding: 1rem 1.5rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--sombra-boton);
+  transition: all 0.22s ease;
+}
+
+.btn-proceed-checkout:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(200, 138, 74, 0.45);
+}
+
+/* ===================================================
+   Página Checkout (Kiosco Digital)
+   =================================================== */
+
+.checkout-page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.checkout-header {
+  border-bottom: 1.5px solid var(--borde-suave);
+  padding-bottom: 1.25rem;
+}
+
+.checkout-eyebrow {
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: var(--canela);
+  text-transform: uppercase;
+}
+
+.checkout-title {
+  font-size: 2.35rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+  letter-spacing: -0.5px;
+  margin-top: 0.2rem;
+}
+
+.checkout-subtitle {
+  font-size: 1.05rem;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+}
+
+.checkout-content-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.checkout-form-card {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  padding: 2.25rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.form-section-title {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+}
+
+.form-section-desc {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  margin-top: 0.2rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-error-alert {
+  background-color: #fbecea;
+  border: 1.5px solid #f2c4bc;
+  color: #a33b2a;
+  border-radius: var(--radio-sm);
+  padding: 0.85rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-inputs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--texto-oscuro);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.85rem 1.15rem;
+  border-radius: var(--radio-sm);
+  border: 1.5px solid var(--borde-suave);
+  background-color: var(--fondo);
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--texto-oscuro);
+  transition: all 0.2s ease;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--canela);
+  background-color: var(--blanco);
+  box-shadow: 0 0 0 3px rgba(200, 138, 74, 0.18);
+}
+
+.form-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.form-divider {
+  height: 1px;
+  background-color: var(--borde-suave);
+  margin: 1.75rem 0;
+}
+
+.btn-confirm-order {
+  width: 100%;
+  background: linear-gradient(135deg, var(--canela), var(--cafe-principal));
+  color: var(--blanco);
+  border: none;
+  border-radius: var(--radio-pill);
+  padding: 1.15rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--sombra-boton);
+  transition: all 0.22s ease;
+  margin-top: 1.75rem;
+}
+
+.btn-confirm-order:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(200, 138, 74, 0.45);
+}
+
+/* ===================================================
+   Página Factura / Confirmación (Kiosco Digital)
+   =================================================== */
+
+.factura-page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.factura-header-banner {
+  text-align: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.success-badge {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: #e5f1e8;
+  color: #28713e;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-weight: 900;
+  box-shadow: 0 6px 16px rgba(40, 113, 62, 0.2);
+}
+
+.factura-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--canela);
+  text-transform: uppercase;
+}
+
+.factura-main-title {
+  font-size: 2.6rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+  letter-spacing: -0.5px;
+  margin: 0.3rem 0;
+}
+
+.factura-main-desc {
+  font-size: 1.1rem;
+  color: var(--texto-suave);
+}
+
+.receipt-container {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  padding: 2.75rem;
+  max-width: 820px;
+  margin: 0 auto;
+  box-shadow: var(--sombra-card);
+  width: 100%;
+}
+
+.receipt-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px dashed var(--borde-suave);
+}
+
+.receipt-brand-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+  display: block;
+}
+
+.receipt-doc-type {
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--canela);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.receipt-number-box {
+  text-align: right;
+}
+
+.receipt-number-box small,
+.receipt-meta-item small,
+.receipt-address-box small,
+.receipt-notes-box small {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--texto-suave);
+  display: block;
+  text-transform: uppercase;
+}
+
+.receipt-order-id {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+  margin-top: 0.2rem;
+  display: block;
+}
+
+.receipt-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px dashed var(--borde-suave);
+}
+
+.receipt-meta-item strong {
+  font-size: 0.98rem;
+  color: var(--texto-oscuro);
+  display: block;
+  margin-top: 0.25rem;
+}
+
+.receipt-items-section {
+  padding: 1.5rem 0;
+}
+
+.receipt-items-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.receipt-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.receipt-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.4rem 0;
+  font-size: 0.98rem;
+}
+
+.receipt-item-name {
+  font-weight: 700;
+  color: var(--texto-oscuro);
+}
+
+.receipt-item-extras {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--canela);
+  margin-top: 0.15rem;
+}
+
+.receipt-item-amount {
+  font-weight: 800;
+  color: var(--cafe-principal);
+}
+
+.receipt-summary-footer {
+  border-top: 2px solid var(--cafe-principal);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.receipt-subtotal-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.98rem;
+  color: var(--texto-suave);
+}
+
+.receipt-grand-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--borde-suave);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--cafe-principal);
+}
+
+.receipt-grand-total strong {
+  font-size: 1.75rem;
+}
+
+.receipt-address-box,
+.receipt-notes-box {
+  background-color: var(--fondo);
+  border-radius: var(--radio-sm);
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+  border: 1px solid var(--borde-suave);
+}
+
+.receipt-address-box p,
+.receipt-notes-box p {
+  font-size: 0.95rem;
+  color: var(--texto-oscuro);
+  margin-top: 0.25rem;
+}
+
+.receipt-footer-notice {
+  text-align: center;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--borde-suave);
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.factura-actions-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-print-receipt {
+  background-color: var(--blanco);
+  border: 2px solid var(--cafe-principal);
+  color: var(--cafe-principal);
+  padding: 0.85rem 1.85rem;
+  border-radius: var(--radio-pill);
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-print-receipt:hover {
+  background-color: var(--crema);
+  transform: translateY(-2px);
+}
+
+.btn-return-menu {
+  background: linear-gradient(135deg, var(--canela), var(--cafe-secundario));
+  color: var(--blanco);
+  text-decoration: none;
+  padding: 0.85rem 2rem;
+  border-radius: var(--radio-pill);
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: var(--sombra-boton);
+  transition: all 0.22s ease;
+}
+
+.btn-return-menu:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(200, 138, 74, 0.4);
+}
+
+/* Reglas de impresión para el Comprobante */
+@media print {
+  .kiosk-navbar,
+  .kiosk-sidebar,
+  .factura-actions-bar,
+  .factura-header-banner {
+    display: none !important;
+  }
+
+  .kiosk-body {
+    min-height: auto;
+  }
+
+  .kiosk-content {
+    padding: 0;
+  }
+
+  .receipt-container {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    max-width: 100%;
+  }
+}
+
+/* Responsividad para Pedido y Checkout */
+@media (max-width: 900px) {
+  .order-content-grid,
+  .checkout-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary-card {
+    position: static;
+  }
+
+  .delivery-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .receipt-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-inputs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .receipt-meta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .receipt-head {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .receipt-number-box {
+    text-align: left;
+  }
+}
+
+
