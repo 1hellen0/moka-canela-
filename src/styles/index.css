@@ -1,36 +1,490 @@
+/* ===================================================
+   Moka & Canela - Sistema de Diseño para Kiosco Digital
+   =================================================== */
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #213547;
-  background-color: #ffffff;
+  /* Paleta de colores oficial */
+  --cafe-principal: #4B2E20;
+  --cafe-secundario: #6F4E37;
+  --canela: #C88A4A;
+  --canela-hover: #B4783B;
+  --canela-light: #F7EDE2;
+  --crema: #F5EEE6;
+  --fondo: #FFF9F2;
+  --blanco: #FFFFFF;
+  --texto-oscuro: #2B211B;
+  --texto-suave: #6D5B52;
+  --borde-suave: #EBDCCE;
+
+  /* Sombras y elevaciones estilo kiosco */
+  --sombra-suave: 0 4px 16px rgba(75, 46, 32, 0.06);
+  --sombra-card: 0 12px 32px rgba(75, 46, 32, 0.08);
+  --sombra-boton: 0 6px 18px rgba(200, 138, 74, 0.35);
+
+  /* Radios redondeados amigables para pantallas táctiles */
+  --radio-sm: 10px;
+  --radio-md: 16px;
+  --radio-lg: 24px;
+  --radio-pill: 9999px;
+
+  /* Tipografía */
+  --font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  min-width: 320px;
+  font-family: var(--font-family);
+  background-color: var(--fondo);
+  color: var(--texto-oscuro);
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-#root {
-  max-width: 1280px;
+/* ===================================================
+   Estructura Kiosco (Layout Principal)
+   =================================================== */
+
+.kiosk-app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--fondo);
+}
+
+.kiosk-body {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 76px);
+}
+
+.kiosk-content {
+  flex: 1;
+  padding: 2.5rem;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+}
+
+/* ===================================================
+   Navbar Superior
+   =================================================== */
+
+.kiosk-navbar {
+  background-color: var(--blanco);
+  border-bottom: 1.5px solid var(--borde-suave);
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--sombra-suave);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-icon {
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, var(--cafe-principal), var(--cafe-secundario));
+  color: var(--blanco);
+  border-radius: var(--radio-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 10px rgba(75, 46, 32, 0.2);
+}
+
+.brand-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--cafe-principal);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.brand-slogan {
+  font-size: 0.82rem;
+  color: var(--canela);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.navbar-order-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--crema);
+  border: 1.5px solid var(--borde-suave);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radio-pill);
+  text-decoration: none;
+  color: var(--cafe-principal);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.navbar-order-btn:hover {
+  background-color: var(--canela-light);
+  border-color: var(--canela);
+  transform: translateY(-2px);
+}
+
+.order-badge {
+  background-color: var(--canela);
+  color: var(--blanco);
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.15rem 0.55rem;
+  border-radius: var(--radio-pill);
+}
+
+/* ===================================================
+   Sidebar (Navegación Lateral Kiosco)
+   =================================================== */
+
+.kiosk-sidebar {
+  width: 250px;
+  background-color: var(--blanco);
+  border-right: 1.5px solid var(--borde-suave);
+  padding: 2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sidebar-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--texto-suave);
+  font-weight: 700;
+  padding: 0 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radio-md);
+  text-decoration: none;
+  color: var(--texto-suave);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.sidebar-link:hover {
+  background-color: var(--crema);
+  color: var(--cafe-principal);
+  transform: translateX(4px);
+}
+
+.sidebar-link.active {
+  background-color: var(--cafe-principal);
+  color: var(--blanco);
+  box-shadow: 0 6px 16px rgba(75, 46, 32, 0.25);
+}
+
+.sidebar-icon {
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================================
+   Hero Principal (Kiosco Digital)
+   =================================================== */
+
+.hero-card {
+  background: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-lg);
+  padding: 3rem;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: center;
+  box-shadow: var(--sombra-card);
+}
+
+.hero-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--canela-light);
+  color: var(--canela);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radio-pill);
+  font-size: 0.85rem;
+  font-weight: 700;
+  width: fit-content;
+  border: 1px solid rgba(200, 138, 74, 0.3);
+}
+
+.hero-title {
+  font-size: 2.85rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--cafe-principal);
+  letter-spacing: -1px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--texto-suave);
+  line-height: 1.5;
+}
+
+.hero-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  background: linear-gradient(135deg, var(--canela), var(--cafe-secundario));
+  color: var(--blanco);
+  font-size: 1.25rem;
+  font-weight: 800;
+  padding: 1.15rem 2.5rem;
+  border-radius: var(--radio-pill);
+  text-decoration: none;
+  box-shadow: var(--sombra-boton);
+  width: fit-content;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 0.5rem;
+}
+
+.hero-cta-btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 24px rgba(200, 138, 74, 0.45);
+}
+
+.hero-image-container {
+  position: relative;
+  border-radius: var(--radio-lg);
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(75, 46, 32, 0.15);
+  border: 3px solid var(--crema);
+  aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--crema);
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.hero-image-container:hover .hero-img {
+  transform: scale(1.03);
+}
+
+.hero-image-overlay-badge {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(43, 33, 27, 0.85);
+  backdrop-filter: blur(8px);
+  color: var(--blanco);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radio-pill);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ===================================================
+   Ventajas (3 Tarjetas Kiosco)
+   =================================================== */
+
+.ventajas-section {
+  margin-top: 2.5rem;
+}
+
+.ventajas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ventaja-card {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-md);
+  padding: 1.6rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  box-shadow: var(--sombra-suave);
+  transition: all 0.25s ease;
+}
+
+.ventaja-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--canela);
+  box-shadow: var(--sombra-card);
+}
+
+.ventaja-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radio-md);
+  background-color: var(--canela-light);
+  color: var(--cafe-principal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.ventaja-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.ventaja-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cafe-principal);
+}
+
+.ventaja-desc {
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+  line-height: 1.4;
+}
+
+/* ===================================================
+   Páginas Secundarias (Placeholder amigable)
+   =================================================== */
+
+.page-placeholder-card {
+  background-color: var(--blanco);
+  border: 1.5px solid var(--borde-suave);
+  border-radius: var(--radio-lg);
+  padding: 4rem 2rem;
   text-align: center;
+  box-shadow: var(--sombra-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
 }
 
-h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-  margin-top: 2rem;
+.page-placeholder-card h1 {
+  font-size: 2.25rem;
+  color: var(--cafe-principal);
+  font-weight: 800;
 }
 
-nav a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+.page-placeholder-card p {
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+  max-width: 500px;
 }
 
-nav a:hover {
-  color: #535bf2;
+/* ===================================================
+   Diseño Adaptativo (Responsive: Tablet y Móvil)
+   =================================================== */
+
+@media (max-width: 992px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+    padding: 2.25rem;
+    gap: 2rem;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+  }
+
+  .ventajas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .kiosk-body {
+    flex-direction: column;
+  }
+
+  .kiosk-sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1.5px solid var(--borde-suave);
+    gap: 0.5rem;
+  }
+
+  .sidebar-title {
+    display: none;
+  }
+
+  .sidebar-link {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .kiosk-content {
+    padding: 1.25rem;
+  }
+
+  .brand-slogan {
+    display: none;
+  }
+
+  .hero-card {
+    padding: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-cta-btn {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 1rem 1.5rem;
+  }
 }
